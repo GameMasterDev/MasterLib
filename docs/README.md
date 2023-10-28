@@ -39,6 +39,7 @@ public class MyMainClass {
 - 🧷 ShortCut
   - [Integrated Logger](#integrated-logger)
   - [Error Handler](#error-handler)
+  - [Discord RPC](#discord-rpc)
 
 ### Integrated Logger
 The Logger is simple to use, you have to create a new Logger and set his name. Now you can log everything, you can <br>
@@ -101,6 +102,31 @@ public class MyClass {
             
             ErrorHandler.save_error(error); // Here we save error into a log file.
         }
+    }
+}
+```
+
+### Discord RPC
+
+This package isn't optimized but it's work, in a update i will optimize it.<br>
+Example Code:
+
+```java
+import com.gamemaster.masterlib.rpc.DiscordRpc;
+
+public class MyClass { 
+    private static DiscordRpc discord;
+
+    public static void main(String[] args) {
+        
+        discord = new DiscordRpc(String app_id, String details, String, state, String LargeImageKey, String LargeImageText, String SmallImageKey, String SmallImageText);
+        // I made many constructors, so you can put at the maximum these arguments
+        // Now the Discord RPC is launched
+        // to stop it only write this:
+        discord.destroyRPC();
+        // and to get data or change it's simple: 
+        String current_state = discord.getState(); // it's the same for all parameters, only change getState to getApplicationId() for example.
+        discord.setState("New State"); // it's the same that before
     }
 }
 ```
