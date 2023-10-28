@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="https://img.shields.io/badge/Version-2.0-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Version-0.0.54_dev-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
 </p>
 
@@ -17,7 +17,7 @@ MasterLib is a java library that contains many libraries with simplified usage, 
 i recommend to use them directly. This library is useful if you want to simplify your code. 
 
 
-## 🛠️ Utilisation
+## 🛠️ Simple Initialization
 
 - Download the latest stable release present on github
 - Next add this lib to your project
@@ -35,14 +35,77 @@ public class MyMainClass {
 }
 ```
 
-## ⚙️ Features
+## 📁 Documentation
+- 🧷 ShortCut
+  - [Integrated Logger](#integrated-logger)
+  - [Error Handler](#error-handler)
 
-- Supports DiscordRPC
-- Has a Logger
-- Has a Error Handler (Soon)
-- Has GUI Manager (Soon)
+### Integrated Logger
+The Logger is simple to use, you have to create a new Logger and set his name. Now you can log everything, you can <br>
+change the color with `logger.log/warn/error("My Message", Color.YELLOW)` for example, but it's deprecated.
+
+```java
+import com.gamemaster.masterlib.logger.Logger;
+import com.gamemaster.masterlib.utils.Color;
+
+public class MyClass {
+
+    private static Logger logger = new Logger("MyLoggerName"); // Here we set the Prefix: "[MyLoggerName] my log".
+    
+    public static void myFunction() {
+        // Function Code
+        logger.log("MyFunction was used"); // We log that the function was used.
+        logger.log("MyFunction was used", Color.GREEN); // We log and change the log color for this time (Deprecated).
+        // Function Code
+    }
+    
+    public static void myFunction2() {
+        // Function Code
+        logger.warn("Warn Message about MyFunction2"); // We warn that it's a little problem about the function.
+        logger.warn("Warn Message about MyFunction2", Color.YELLOW); // We log and change the log color for this time (Deprecated).
+        // Function Code
+    }
+    
+    public static void myFunction3() {
+        // Function Code
+        if(error == true) {
+            logger.error("Error Message"); // We send the error in the function.
+            logger.error("Error Message", Color.RED); // We send the error and change the log color for this time (Deprecated).
+        }
+        // Function Code
+    }
+}
+```
+
+### Error Handler
+
+This package is to make the error feels cool (not really cool, an error it's bad), the package come with a converter: <br>
+`ErrorConverter`, you need to convert your errors before using the handler.
+
+```java
+import com.gamemaster.masterlib.errors.ErrorConverter;
+import com.gamemaster.masterlib.errors.ErrorHandler;
+import com.gamemaster.masterlib.utils.Color;
+
+public class MyClass {
+    public static void main(String[] args) {
+        try {
+            int a = 10;
+            int b = 0;
+            int result = a / b;
+            System.out.println("Result: " + result); // Here we are causing an error, only to activate the catch function
+        } catch (ArithmeticException e) {
+            String error = ErrorConverter.convertError(e); // We convert the error
+            ErrorHandler.show_error(error); // We show the error
+            ErrorHandler.show_error(error, Color.RED); // We show the error with color red (Deprecated)
+            
+            ErrorHandler.save_error(error); // Here we save error into a log file.
+        }
+    }
+}
+```
 
 ## 🧰 Dependencies
 
-- Java
+- [Java](https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249203_b291ca3e0c8548b5a51d5a5f50063037)
 - [Discord RPC Library](../libs/java-discord-rpc-2.0.1-all.jar)
