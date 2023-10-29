@@ -1,0 +1,37 @@
+name: 🐞 Bug Report
+description: Submit a report to help us improve
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ***Thanks for taking the time to fill out this report!***
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Which OS you are using ?
+      multiple: false
+      options:
+        - Windows 10
+        - Windows 11
+        - Debian
+        - Ubuntu
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: |
+        *A summary of the issue. Attach screenshots if needed.*
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      render: shell
+      label: If you know the reason of the bug tell us please
+      description: |
+        *Only if you know the reason*

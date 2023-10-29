@@ -1,0 +1,38 @@
+name: 🛠️ Feature Suggestion
+description: Submit a suggestion
+labels: ["feature"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ***Thanks for taking the time to fill out this suggestion!***
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Which OS you are using ?
+      multiple: false
+      options:
+        - Kali Linux
+        - Debian
+        - Windows (seriously?)
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Which type of Feature ?
+      multiple: false
+      options:
+        - New Tool
+        - More Options in an existing tool
+        - Other
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature
+      description: |
+        *A summary of the feature.*
+    validations:
+      required: true
