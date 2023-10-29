@@ -9,23 +9,13 @@ body:
         ***Thanks for taking the time to fill out this suggestion!***
 
   - type: dropdown
-    id: environment
-    attributes:
-      label: Which OS you are using ?
-      multiple: false
-      options:
-        - Kali Linux
-        - Debian
-        - Windows (seriously?)
-
-  - type: dropdown
     id: feature-type
     attributes:
       label: Which type of Feature ?
       multiple: false
       options:
-        - New Tool
-        - More Options in an existing tool
+        - New Library Include
+        - More Options in an existing library
         - Other
 
   - type: textarea
