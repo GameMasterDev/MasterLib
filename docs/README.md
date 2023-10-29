@@ -168,3 +168,4 @@ public class MyClass {
 
 - [Java](https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249203_b291ca3e0c8548b5a51d5a5f50063037)
 - [Discord RPC Library](../libs/java-discord-rpc-2.0.1-all.jar)
+- [Gson](../libs/gson-2.8.0.jar)
