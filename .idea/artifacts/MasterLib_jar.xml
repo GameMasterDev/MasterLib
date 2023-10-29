@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MasterLib:jar">
+    <output-path>$PROJECT_DIR$/out/jar</output-path>
+    <root id="archive" name="MasterLib.jar">
+      <element id="module-output" name="MasterLib" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/java-discord-rpc-2.0.1-all.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

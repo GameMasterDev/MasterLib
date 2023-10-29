@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="https://img.shields.io/badge/Version-0.0.54_dev-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Version-0.0.60_dev-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
 </p>
 
@@ -14,7 +14,8 @@
 ## 📜 Description
 
 MasterLib is a java library that contains many libraries with simplified usage, but if you want to fully manage the libraries<br>
-i recommend to use them directly. This library is useful if you want to simplify your code. 
+i recommend to use them directly. This library is useful if you want to simplify your code.
+This Project is under [MIT License](LICENSE)
 
 
 ## 🛠️ Simple Initialization
@@ -25,13 +26,18 @@ i recommend to use them directly. This library is useful if you want to simplify
 
 ```java
 import com.gamemaster.masterlib.MasterLib;
+import com.gamemaster.masterlib.logger.Logger;
 
 public class MyMainClass {
-    public static void main(String[] args) {
-        // Your Code
-        MasterLib.init();
-        // Your Code
-    }
+
+  public static Logger logger = new Logger("MyLoggerName"); // We Create the logger
+
+  public static void main(String[] args) {
+    // Your Code
+    MasterLib.init(logger.getLoggerName()); // This code initialize components, and specify the loggerName
+    MasterLib.initJson("config.json"); // This code initialize the json manager and create a file "config.json".
+    // Your Code
+  }
 }
 ```
 
@@ -40,6 +46,7 @@ public class MyMainClass {
   - [Integrated Logger](#integrated-logger)
   - [Error Handler](#error-handler)
   - [Discord RPC](#discord-rpc)
+  - [Gson](#gson)
 
 ### Integrated Logger
 The Logger is simple to use, you have to create a new Logger and set his name. Now you can log everything, you can <br>
@@ -49,9 +56,9 @@ change the color with `logger.log/warn/error("My Message", Color.YELLOW)` for ex
 import com.gamemaster.masterlib.logger.Logger;
 import com.gamemaster.masterlib.utils.Color;
 
-public class MyClass {
+public class Main {
 
-    private static Logger logger = new Logger("MyLoggerName"); // Here we set the Prefix: "[MyLoggerName] my log".
+    public static Logger logger = new Logger("MyLoggerName"); // Here we set the Prefix: "[MyLoggerName] my log".
     
     public static void myFunction() {
         // Function Code
@@ -119,14 +126,40 @@ public class MyClass {
 
     public static void main(String[] args) {
         
-        discord = new DiscordRpc(String app_id, String details, String, state, String LargeImageKey, String LargeImageText, String SmallImageKey, String SmallImageText);
-        // I made many constructors, so you can put at the maximum these arguments
+        discord = new DiscordRpc(app_id, details, String, state, LargeImageKey, LargeImageText, SmallImageKey, SmallImageText);
+        // You can put at the maximum these arguments
         // Now the Discord RPC is launched
         // to stop it only write this:
         discord.destroyRPC();
         // and to get data or change it's simple: 
         String current_state = discord.getState(); // it's the same for all parameters, only change getState to getApplicationId() for example.
         discord.setState("New State"); // it's the same that before
+    }
+}
+```
+
+### Gson
+
+We have implemented gson library, to initialize it you need to add this in your main function: <br>
+`MasterLib.initJson("config.json)` here we say config.json it's the default file to create, you can change the file name.<br>
+Here how it's work:
+
+```java
+import com.gamemaster.masterlib.MasterLib;
+import com.gamemaster.masterlib.logger.Logger;
+import com.gamemaster.masterlib.json.JsonManager;
+
+public class MyClass {
+
+    public static Logger logger = new Logger("LoggerName");
+
+    public static void main(String[] args) {
+        MasterLib.init(logger.getLoggerName()); // Default lib initialization
+        MasterLib.initJson("config.json"); // Json Initialization
+        
+        JsonManager.createNewJsonFile("newJsonFile.json"); // Here we create a new json file
+        JsonManager.writeIntoJson("filename.json", "data name", "data value"); // Here we write data into a specified json file
+        JsonManager.deleteJsonFile("filename.json"); // Here we delete a json file
     }
 }
 ```

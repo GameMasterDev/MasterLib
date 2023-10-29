@@ -11,12 +11,13 @@ import java.util.logging.SimpleFormatter;
 
 public class LogErrors {
 
-    private static Logger logger = new Logger("Error Handler Logger");
+    private static Logger logger;
 
     private static String logFileName = "error_logs.log";
     private static FileHandler fileHandler;
 
-    public static void init() {
+    public static void init(String loggerName) {
+        logger = new Logger(loggerName);
         try {
             fileHandler = new FileHandler(logFileName, true);
             fileHandler.setFormatter(new SimpleFormatter());

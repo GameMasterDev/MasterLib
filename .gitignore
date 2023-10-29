@@ -2,7 +2,13 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
+test
+test_resources
+testlibs
+error_logs.log
+error_logs.log.lck
+java.util.logging.FileHandler@372a00
+java.util.logging.FileHandler@372a00.lck
 ### Eclipse ###
 .apt_generated
 .classpath

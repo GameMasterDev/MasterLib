@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class ErrorHandler {
 
-    public static void init() {
-        LogErrors.init();
+    public static void init(String logger) {
+        LogErrors.init(logger);
     }
 
     public static void save_error(String error) {
